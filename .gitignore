@@ -60,6 +60,13 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/data/
+data/
+
 
 # Flask stuff:
 instance/
@@ -216,3 +223,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node & Next.js
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+out/
+frontend/out/
+*.tsbuildinfo
+next-env.d.ts
