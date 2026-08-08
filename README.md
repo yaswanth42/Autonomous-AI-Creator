@@ -25,33 +25,33 @@ AutoPersona AI is pre-configured with **Ada**, an authoritative AI Security Spec
 
 ```mermaid
 flowchart TD
-    subgraph Autonomous Scheduler (4-Hour Interval)
-        A[APScheduler Trigger] --> B[Topic Discovery Engine]
+    subgraph SCHEDULER ["Autonomous Scheduler (4-Hour Interval)"]
+        A["APScheduler Trigger"] --> B["Topic Discovery Engine"]
     end
 
-    subgraph Intelligence & Discovery
-        B -->|Curated AI Keywords| C[Tavily Search / Research Sources]
-        C --> D[Candidate Topics Pool]
+    subgraph DISCOVERY ["Intelligence & Discovery"]
+        B -->|Curated AI Keywords| C["Tavily Search / Research Sources"]
+        C --> D["Candidate Topics Pool"]
     end
 
-    subgraph Cognitive Pipeline (LangGraph)
-        D --> E[Breeth Memory Engine]
-        E -->|TF-IDF Semantic Vector Check| F{Duplicate / Novelty Gate}
-        F -- Novel Topic --> G[7-Factor Editorial Engine]
-        F -- Duplicate / Stale --> H[Drop Candidate]
+    subgraph COGNITIVE ["Cognitive Pipeline (LangGraph)"]
+        D --> E["Breeth Memory Engine"]
+        E -->|TF-IDF Semantic Vector Check| F{"Duplicate / Novelty Gate"}
+        F -->|Novel Topic| G["7-Factor Editorial Engine"]
+        F -->|Duplicate / Stale| H["Drop Candidate"]
         
-        G -->|Score >= 7.0| I[Persona Generation Engine]
-        G -->|Score < 7.0| J[Rejected Topics Store]
+        G -->|Score >= 7.0| I["Persona Generation Engine"]
+        G -->|Score < 7.0| J["Rejected Topics Store"]
         
-        I -->|LinkedIn Format: Hook + Body + Insights + Takeaway| K[Post Generator]
-        K --> L[SQLite Persistent Store]
-        K --> M[Breeth Memory Node Sync]
+        I -->|LinkedIn Format| K["Post Generator"]
+        K --> L[("SQLite Database")]
+        K --> M["Breeth Memory Node Sync"]
     end
 
-    subgraph API & UI Layer
-        L --> N[FastAPI REST Backend]
-        N --> O[Next.js 15 Dashboard]
-        O -->|Real-Time Telemetry| P[Feed, Status, Memory, Analytics, AI Usage]
+    subgraph PRESENTATION ["API & UI Layer"]
+        L --> N["FastAPI REST Backend"]
+        N --> O["Next.js 15 Dashboard"]
+        O --> P["Feed, Status, Memory & Analytics"]
     end
 ```
 
